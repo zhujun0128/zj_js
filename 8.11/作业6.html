@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作业6</title>
+</head>
+<body>
+<script>
+    var arr = new Array();
+    for(var i = 0;i < 60;i++)
+    {
+        arr[i] = Math.floor(Math.random() *51 + 10);
+    }
+    var arr1 = new Array();
+    var count = new Array();
+    var flag = false;
+    var key = 0;
+    for(var i = 0;i < arr.length;i++)
+    {
+        for(var j = 0;j < arr1.length;j++)
+        {
+            if(arr[i] == arr1[j])
+            {
+                count[j] ++;
+                flag = true;
+            }
+        }
+        if(!flag)
+        {
+            arr1.push(arr[i]);
+            count[key++] = 1;
+        }
+        flag = false;
+    }
+    document.write("100个10-60之间的随机整数分别是" + arr + "<br>其中");
+    for(var i = 0;i < arr1.length;i++)
+    {
+        document.write(arr1[i] + "出现了" + count[i] + "次<br>");
+    }
+</script>
+</body>
+</html>

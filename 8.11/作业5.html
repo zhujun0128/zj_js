@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作业5</title>
+</head>
+<body>
+<script>
+    var arrNum = [1,4,1,1,3,3,4,6,7,8,3,7,0,11,22,22];
+    var key = prompt("请输入要删除的元素下标：");
+    function removeArrayBySub(key) {
+        document.write("删除数组arrNum = [" + arrNum + "]中下标为" + key + "的元素后，结果为：");
+        arrNum.splice(key,1);
+        document.write("arrNum = [" + arrNum + "]");
+    }
+    removeArrayBySub(key);
+</script>
+</body>
+</html>

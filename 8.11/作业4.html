@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作业4</title>
+</head>
+<body>
+<script>
+    var arr = [3,9,6,5,8,2,6,8,1,5,2,3,1,9];
+    var max = 0;
+    var min = 0;
+    function removeMaxAndMin() {
+        max = Math.max.apply(Math,arr);
+        min = Math.min.apply(Math,arr);
+        document.write("删除数组arr = [" + arr + "]中最大值和最小值后的结果是");
+        for(var i = arr.length - 1;i >= 0;i--)
+        {
+            if(arr[i] == min || arr[i] == max)
+            {
+                arr.splice(i,1);
+            }
+        }
+        document.write("arr = [" + arr + "]");
+    }
+    removeMaxAndMin();
+</script>
+</body>
+</html>

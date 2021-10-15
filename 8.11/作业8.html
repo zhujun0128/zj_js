@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作业8</title>
+</head>
+<body>
+<script>
+    var arr = [3,-1,2,"饥人谷",true];
+    function getPositiveNumberByArray(arr) {
+        var newarr = new Array();
+        for(var i = 0;i < arr.length;i++)
+        {
+            if(typeof(arr[i]) == "number" && arr[i] > 0)
+            {
+                newarr.push(arr[i]);
+            }
+        }
+        return newarr;
+    }
+    arr = getPositiveNumberByArray(arr);
+    document.write(arr);
+</script>
+</body>
+</html>

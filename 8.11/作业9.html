@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #d1{
+            width: 500px;
+            position: relative;
+            left: 50%;
+            margin-left: -250px;
+            text-align: center;
+        }
+        table{
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <p>点击unshift按钮，把{name:"liuqi",age:16}对象插入到table中，并且按照年纪的升序排列</p>
+    <p>点击push按钮，把{name:"lining",age:15}对象插入到table中，并且按照年纪的升序排列</p>
+    <p>var arr = [{name:"zhangsan",age:18},{name:"lisi",age:17},{name:"wangwu",age:20}];</p>
+    <div id="d1">
+        <table border="1" align="client">
+            <thead>
+                <tr>
+                    <td style="width: 300px;font-weight: bold;">name</td>
+                    <td style="width: 150px;font-weight: bold;">age</td>
+                </tr>
+            </thead>
+            <tbody id="tab">
+
+            </tbody>
+        </table>
+        <button>点击动态生成表格</button>
+        <button>unshift</button>
+        <button>shift</button>
+        <button>push</button>
+        <button>pop</button>
+    </div>
+</div>
+<script>
+    var arr = [{name:"zhangsan",age:18},{name:"lisi",age:17},{name:"wangwu",age:20}];
+    var obj1 = {name:"liuqi",age:16};
+    var obj2 = {name:"lining",age:15};
+    var btn = document.getElementsByTagName("button");
+    var tab = document.getElementById("tab");
+    function display_table() {
+        tab.innerHTML = "";
+        for(var i = 0;i < arr.length;i++)
+        {
+            var tr1 = document.createElement("tr");
+            tab.appendChild(tr1);
+            var td1 = document.createElement("td");
+            td1.innerHTML = arr[i].name;
+            td1.style.width = "300px";
+            tr1.appendChild(td1);
+            var td2 = document.createElement("td");
+            td2.innerHTML = arr[i].age;
+            td2.style.width = "150px";
+            tr1.appendChild(td2);
+        }
+    }
+    function myFunOfSort() {
+        arr.sort(function (a,b) {
+            return a.age - b.age;
+        })
+    }
+    btn[0].onclick = function () {
+        display_table();
+    };
+    btn[1].onclick = function () {
+        arr.unshift(obj1);
+        myFunOfSort();
+        display_table();
+    };
+    btn[2].onclick = function () {
+        arr.shift();
+        display_table();
+    };
+    btn[3].onclick = function () {
+        arr.push(obj2);
+        myFunOfSort();
+        display_table();
+    };
+    btn[4].onclick = function () {
+        arr.pop();
+        display_table();
+    };
+</script>
+</body>
+</html>

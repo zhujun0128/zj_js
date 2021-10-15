@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            width: 1000px;
+            height: 500px;
+            position: relative;
+            left: 50%;
+            margin-left: -500px;
+            text-align: center;
+        }
+        #uli{
+            margin-top: 20px;
+            list-style: none;
+        }
+        #uli >li{
+            width: 250px;
+            height: 280px;
+            border: 1px solid;
+            float: left;
+        }
+        #uli >li:nth-child(2){
+            margin: 0px 20px;
+        }
+        #uli >li:nth-child(5){
+            margin: 0px 20px;
+        }
+        #uli >li:nth-child(n){
+            margin-bottom: 20px;
+        }
+        li > img{
+            width: 250px;
+            height:250px;
+        }
+        li > span{
+            font-size: 18px;
+            font-weight: bold;
+        }
+        button{
+            position: relative;
+            left: -450px;
+            top:600px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <p>微波炉排名1、美的排名2、电饭煲排名3、烤瓷炉排第4、电磁炉排第5、小米饮水器第6</p>
+    <ul id="uli">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <button id="btn" >点击进入热门的图片</button>
+</div>
+<script>
+    var obj = [{id:0,name:"电磁炉",img:"img/one.jpg"},
+        {id:1,name:"小米饮水机",img:"img/two.jpg"},
+        {id:2,name:"美的",img:"img/three.jpg"},
+        {id:3,name:"电饭煲",img:"img/four.jpg"},
+        {id:4,name:"微波炉",img:"img/five.jpg"},
+        {id:5,name:"烤瓷炉",img:"img/six.jpg"}];
+    var order = [4,2,3,5,0,1];
+    var btn = document.getElementById("btn");
+    var list = document.getElementsByTagName("li");
+    function displayByObj() {
+        var key = 0;
+        obj.forEach(function (t) {
+            var img = document.createElement("img");
+            var span = document.createElement("span");
+            img.src = t.img;
+            span.innerHTML = t.name;
+            list[key].appendChild(img);
+            list[key].appendChild(span);
+            key++;
+        });
+    }
+    function SortByOrder() {
+       obj.sort(function (a,b) {
+           return order.indexOf(a.id) - order.indexOf(b.id);
+       }) ;
+    }
+    window.onload = function () {
+        displayByObj();
+    }
+    btn.onclick = function () {
+        for(var i = 0;i < list.length;i++)
+        {
+            list[i].innerHTML = "";
+        }
+        SortByOrder();
+        displayByObj();
+    }
+</script>
+</body>
+</html>

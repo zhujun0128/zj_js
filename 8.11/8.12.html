@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+        }
+        table img{
+            width: 200px;
+            height: 100px;
+        }
+        td{
+            text-align: center;
+        }
+        #div_img{
+            text-align: center;
+        }
+        #div_img div{
+            width: 200px;
+            height: 200px;
+            border: 1px solid;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        #div_img img{
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <table border="1" align="center">
+        <tr>
+            <td style="width: 100px;"><input type='checkbox'></input></td>
+            <td style="width: 300px;"><img src="img/one.jpg" alt=""></td>
+        </tr>
+        <tr>
+            <td><input type='checkbox'></input></td>
+            <td><img src="img/two.jpg" alt=""></td>
+        </tr>
+        <tr>
+            <td><input type='checkbox'></input></td>
+            <td><img src="img/three.jpg" alt=""></td>
+        </tr>
+        <tr>
+            <td><input type='checkbox'></input></td>
+            <td><img src="img/four.jpg" alt=""></td>
+        </tr>
+        <tr>
+            <td><input type='checkbox'></input></td>
+            <td><img src="img/five.jpg" alt=""></td>
+        </tr>
+        <tr>
+            <td><input type='checkbox'></input></td>
+            <td><img src="img/six.jpg" alt=""></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button>从头部插入</button>
+                <button>从中间位置插入</button>
+                <button>从尾部插入</button>
+            </td>
+        </tr>
+    </table>
+    <div id="div_img">
+        <div>
+            <img src="img/one.jpg" alt="">
+        </div>
+        <div>
+            <img src="img/six.jpg" alt="">
+        </div>
+    </div>
+</div>
+<script>
+    var arr = ["img/one.jpg","img/six.jpg"];
+    var arr1 = ["img/one.jpg","img/two.jpg","img/three.jpg","img/four.jpg","img/five.jpg","img/six.jpg"];
+    var div_img = document.getElementById("div_img");
+    var inp = document.getElementsByTagName("input");
+    var btn = document.getElementsByTagName("button");
+    function display_div() {
+        div_img.innerHTML = "";
+        for(var i = 0;i < arr.length;i++)
+        {
+            var div1 = document.createElement("div");
+            div_img.appendChild(div1);
+            var img1 = document.createElement("img");
+            div1.appendChild(img1);
+            img1.src = arr[i];
+        }
+    }
+    function getInsertByUnshift() {
+        for(var i = 0;i < inp.length;i++)
+        {
+            if(inp[i].checked)
+            {
+                arr.unshift(arr1[i]);
+            }
+        }
+    }
+    function getInsertByPush() {
+        for(var i = 0;i < inp.length;i++)
+        {
+            if(inp[i].checked)
+            {
+                arr.push(arr1[i]);
+            }
+        }
+    }
+    function getInsertBySplice() {
+        for(var i = 0;i < inp.length;i++)
+        {
+            if(inp[i].checked)
+            {
+                arr.splice(Math.floor(arr.length / 2),0,arr1[i]);
+            }
+        }
+    }
+    btn[0].onclick = function () {
+        getInsertByUnshift();
+        display_div();
+    };
+    btn[1].onclick = function () {
+        getInsertBySplice();
+        display_div();
+    };
+    btn[2].onclick = function () {
+        getInsertByPush();
+        display_div();
+    }
+</script>
+</body>
+</html>
