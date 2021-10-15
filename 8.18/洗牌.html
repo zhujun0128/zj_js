@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            width: 1400px;
+            height: 260px;
+            margin: 0 auto;
+            position: relative;
+            top:20px;
+            list-style: none;
+        }
+        ul >li{
+            border: 1px solid red;
+            position: absolute;
+            width: 200px;
+            height: 260px;
+            line-height: 260px;
+            text-align: center;
+            left: 0;
+            top: 0;
+            transition: all 2s;
+            font-size: 24px;
+            font-weight: bold;
+            background-color: rgba(155,155,200,0.2);
+        }
+        button{
+            width: 150px;
+            height: 50px;
+            font-size: 24px;
+            position: relative;
+            top: 600px;
+            left: 860px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+        <li>11</li>
+        <li>12</li>
+        <li>13</li>
+        <li>14</li>
+        <li>15</li>
+        <li>16</li>
+        <li>17</li>
+        <li>18</li>
+    </ul>
+    <button id="btn">洗牌</button>
+</div>
+<script>
+    var li1 = document.getElementsByTagName("li");
+    var btn = document.getElementById("btn");
+    var lefe1 = new Array();
+    var top1 = new Array();
+    var x = -220,y = -280;
+    window.onload = function () {
+        for(var i = 0;i < li1.length;i++)
+        {
+            if(i % 6 == 0)
+            {
+                y += 280;
+                x = 0;
+            }
+            else
+            {
+                x += 220;
+            }
+            lefe1.push(x);
+            top1.push(y);
+            li1[i].style.left =  lefe1[i] + "px";
+            li1[i].style.top =  top1[i] + "px";
+        }
+    };
+    btn.onclick = function () {
+        for(var i = li1.length - 1;i >= 1;i--)
+        {
+            var key = Math.floor(Math.random() * i);
+            var temp;
+            temp = lefe1[key];
+            lefe1[key] = lefe1[i];
+            lefe1[i] = temp;
+            temp = top1[key];
+            top1[key] = top1[i];
+            top1[i] = temp;
+        }
+        for(var i = 0;i < li1.length;i++)
+        {
+            li1[i].style.left = lefe1[i] + "px";
+            li1[i].style.top = top1[i] + "px";
+        }
+    }
+</script>
+</body>
+</html>
