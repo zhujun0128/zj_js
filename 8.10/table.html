@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box">
+    <p>var arr = [{checked:false,name:"lisi",score:80},{checked:true,name:"zhangsan",score:70},{checked:false,name:"wangwu",score:90}];</p>
+    <button id="btn1">点击生成表格</button>
+</div>
+<script>
+    var arr = [{checked:false,name:"lisi",score:80},{checked:true,name:"zhangsan",score:70},{checked:false,name:"wangwu",score:90}];
+    var box = document.getElementById("box");
+    var btn1 = document.getElementById("btn1");
+    btn1.onclick = function () {
+        var tab;
+        if(document.getElementsByTagName("table").length != 0)
+        {
+            return ;
+        }
+        else{
+            tab = document.createElement("table");
+        }
+        tab.border = "1";
+        tab.style.marginBottom = "10px";
+        box.insertBefore(tab,btn1);
+        for(var i = 0;i < arr.length;i++)
+        {
+            var tr1 = document.createElement("tr");
+            tab.appendChild(tr1);
+            var td1 = document.createElement("td");
+            if(arr[i].checked)
+            {
+                td1.innerHTML = "<input type='checkbox' checked='checked'></input>";
+            }
+            else
+            {
+                td1.innerHTML = "<input type='checkbox'></input>";
+            }
+            td1.style.width = "50px";
+            tr1.appendChild(td1);
+            var td2 = document.createElement("td");
+            td2.innerHTML = arr[i].name;
+            td2.style.width = "150px";
+            tr1.appendChild(td2);
+            var td3 = document.createElement("td");
+            td3.innerHTML = arr[i].score;
+            td3.style.width = "50px";
+            tr1.appendChild(td3);
+        }
+    }
+</script>
+</body>
+</html>
