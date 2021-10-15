@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container{
+            width: 500px;
+            position: relative;
+            left: 50%;
+            margin-left: -250px;
+            margin-top: 200px;
+        }
+        table{
+            width: 500px;
+            text-align: center;
+        }
+        thead{
+            background-color: deepskyblue;
+        }
+        tbody{
+            background-color: beige;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <table>
+        <thead>
+            <tr>
+                <td><input type='checkbox'></input></td>
+                <td>菜名</td>
+                <td>饭店</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type='checkbox'></input></td>
+                <td>地三鲜</td>
+                <td>田老师</td>
+            </tr>
+            <tr>
+                <td><input type='checkbox'></input></td>
+                <td>佛跳墙</td>
+                <td>田老师</td>
+            </tr>
+            <tr>
+                <td><input type='checkbox'></input></td>
+                <td>北京烤鸭</td>
+                <td>田老师</td>
+            </tr>
+            <tr>
+                <td><input type='checkbox'></input></td>
+                <td>澳洲龙虾</td>
+                <td>田老师</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<script>
+    var inp = document.getElementsByTagName("input");
+    inp[0].onclick = function () {
+        for(var i = 1;i < inp.length;i++)
+        {
+            inp[i].checked = inp[0].checked;
+        }
+    };
+    function myFun() {
+        var flag = false;
+        for(var i = 1;i < inp.length;i++)
+        {
+            if(!inp[i].checked)
+            {
+                flag = true;
+                break;
+            }
+        }
+        inp[0].checked = !flag;
+    }
+    inp[1].onclick = function () {
+        myFun();
+    };
+    inp[2].onclick = function () {
+        myFun();
+    };
+    inp[3].onclick = function () {
+        myFun();
+    };
+    inp[4].onclick = function () {
+        myFun();
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box1{
+            width: 400px;
+            height: 400px;
+            border: 3px solid;
+            float: left;
+            margin: 20px;
+            /*background: url("1.jpg") no-repeat 100% 100% / cover;*/
+            background: url("1.jpg");
+        }
+        #box2{
+            width: 400px;
+            height: 400px;
+            border: 3px solid;
+            float: left;
+            margin: 20px;
+            background: url("2.jpg");
+            opacity: 0;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: rgba(255,255,0,0.3);
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            cursor: move;
+            opacity: 0;
+        }
+        #box1:hover #box{
+            opacity: 1;
+        }
+        #box1:hover + #box2{
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+<div id="box1">
+    <div id="box"></div>
+</div>
+<div id="box2"></div>
+<script>
+    var box = document.getElementById("box");
+    var box2 = document.getElementById("box2");
+    box.onmousedown = function (e) {
+        var x = e.clientX - box.offsetLeft;
+        var y = e.clientY - box.offsetTop;
+        document.onmousemove = function (e) {
+            var left1 = e.clientX - x;
+            var top1 = e.clientY - y;
+            if(left1 <= 23)
+            {
+                left1 = 23;
+            }
+            var docWidth = 423 - box.offsetWidth;
+            if(left1 >= docWidth)
+            {
+                left1 = docWidth;
+            }
+            if(top1 <= 23)
+            {
+                top1 = 23;
+            }
+            var docHeight = 423 - box.offsetHeight;
+            if(top1 >= docHeight)
+            {
+                top1 = docHeight;
+            }
+            box.style.left = left1 + "px";
+            box.style.top = top1 + "px";
+            box2.style.backgroundPosition = -2 * (left1 -23) + "px " + -2 * (top1 - 23) + "px";
+        }
+    };
+    document.onmouseup = function () {
+        document.onmousedown = null;
+        document.onmousemove = null;
+    }
+</script>
+</body>
+</html>
