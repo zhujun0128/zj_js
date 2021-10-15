@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width: 800px;
+            height: 600px;
+            border: 1px solid;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -400px;
+            margin-top: -300px;
+        }
+        #b1{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background-color: red;
+        }
+        #b2{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div id="b1"></div>
+        <div id="b2"></div>
+    </div>
+    <script>
+        var b1 = document.getElementById("b1");
+        var b2 = document.getElementById("b2");
+        var arr1 = [0,0,true,true];
+        var arr2 = [700,500,false,false];
+        arr1[0] = Math.floor(Math.random() * (800 - 100));
+        arr1[1] =  Math.floor(Math.random() * (600 - 100));
+        arr2[0] = Math.floor(Math.random() * (800 - 100));
+        arr2[1] =  Math.floor(Math.random() * (600 - 100));
+        while(true)
+        {
+            if(Math.abs(arr1[1] - arr2[1]) < 100)
+            {
+                arr2[1] =  Math.floor(Math.random() * (600 - 100));
+            }else if(Math.abs(arr1[0] - arr2[0]) <= 100)
+            {
+                arr2[0] = Math.floor(Math.random() * (800 - 100));
+            }else
+            {
+                break;
+            }
+        }
+        b1.style.left = arr1[0] + "px";
+        b1.style.top = arr1[1] + "px";
+        b2.style.left = arr2[0] + "px";
+        b2.style.top = arr2[1] + "px";
+        function reviseLeft(arr) {
+            if(arr[2])
+            {
+                arr[0] += 4;
+                if(arr[0] >= 700)
+                {
+                    arr[0] = 700;
+                    arr[2] = false;
+                }
+            }
+            else
+            {
+                arr[0] -= 4;
+                if(arr[0] <= 0)
+                {
+                    arr[0] = 0;
+                    arr[2] = true;
+                }
+            }
+        }
+        function reviseTop(arr) {
+            if(arr[3])
+            {
+                arr[1] += 4;
+                if(arr[1] >= 500)
+                {
+                    arr[1] = 500;
+                    arr[3] = false;
+                }
+            }
+            else
+            {
+                arr[1] -= 4;
+                if(arr[1] <= 0)
+                {
+                    arr[1] = 0;
+                    arr[3] = true;
+                }
+            }
+        }
+        function isCollide(arr1,arr2) {
+            if(Math.abs(arr1[0] - arr2[0]) <= 100 && Math.abs(arr1[1] - arr2[1]) <= 100)
+            {
+                if(Math.abs(arr1[0] - arr2[0]) >= 96)
+                {
+                    if(arr1[1] > arr2[1])
+                    {
+                        arr1[2] = !arr1[2];
+                        arr2[2] = !arr2[2];
+                        return ;
+                    }
+                    else
+                    {
+                        arr2[3] = !arr2[3];
+                        arr1[2] = !arr1[2];
+                        arr2[2] = !arr2[2];
+                        return ;
+                    }
+
+                }
+                if(Math.abs(arr1[1] - arr2[1]) >= 96)
+                {
+                    if(arr1[0] > arr2[0])
+                    {
+                        arr1[3] = !arr1[3];
+                        arr2[3] = !arr2[3];
+                        return ;
+                    }
+                    else
+                    {
+                        arr2[2] = !arr2[2];
+                        arr1[3] = !arr1[3];
+                        arr2[3] = !arr2[3];
+                        return ;
+                    }
+                }
+                arr1[2] = !arr1[2];
+                arr2[2] = !arr2[2];
+                arr1[3] = !arr1[3];
+                arr2[3] = !arr2[3];
+            }
+        }
+        var timer;
+        function move() {
+            reviseLeft(arr1);
+            reviseLeft(arr2);
+            reviseTop(arr1);
+            reviseTop(arr2);
+            isCollide(arr1,arr2);
+            b1.style.left = arr1[0] + "px";
+            b1.style.top = arr1[1] + "px";
+            b2.style.left = arr2[0] + "px";
+            b2.style.top = arr2[1] + "px";
+        }
+        timer = setInterval(move,10);
+    </script>
+</body>
+</html>
