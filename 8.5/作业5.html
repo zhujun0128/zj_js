@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .d1{
+            width: 1000px;
+            height: 200px;
+        }
+        #img1{
+            width: 200px;
+            height: 100px;
+            background: url("img/1.jpg") no-repeat;
+            background-size: 100%;
+            float: left;
+            margin-left: 50px;
+        }
+        #img2{
+            width: 200px;
+            height: 100px;
+            float: left;
+            background: url("img/2.jpg") no-repeat;
+            background-size: 100%;
+            margin-left: 50px;
+        }
+        #img3{
+            width: 200px;
+            height: 100px;
+            float: left;
+            background: url("img/3.jpg") no-repeat;
+            background-size: 100%;
+            margin-left: 50px;
+        }
+        #img4{
+            width: 200px;
+            height: 100px;
+            float: left;
+            background: url("img/4.jpg") no-repeat;
+            background-size: 100%;
+            margin-left: 50px;
+        }
+        #img5{
+            width: 400px;
+            height: 250px;
+            background: url("img/placeholder.png") no-repeat;
+            margin-left: 100px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="d1">
+        <div id="img1"></div>
+        <div id="img2"></div>
+        <div id="img3"></div>
+        <div id="img4"></div>
+    </div>
+    <div id="img5"></div>
+</div>
+<script>
+    var img1 = document.getElementById("img1");
+    var img2 = document.getElementById("img2");
+    var img3 = document.getElementById("img3");
+    var img4 = document.getElementById("img4");
+    var img5 = document.getElementById("img5");
+    var key = 1;
+    img1.onclick = function () {
+        img5.style.background = "url('img/1.jpg') no-repeat";
+        img5.style.backgroundSize = "100%";
+    }
+    img2.onclick = function () {
+        img5.style.background = "url('img/2.jpg') no-repeat";
+        img5.style.backgroundSize = "100%";
+    }
+    img3.onclick = function () {
+        img5.style.background = "url('img/3.jpg') no-repeat";
+        img5.style.backgroundSize = "100%";
+    }
+    img4.onclick = function () {
+        img5.style.background = "url('img/4.jpg') no-repeat";
+        img5.style.backgroundSize = "100%";
+    }
+    document.onkeydown =function (e) {
+//        console.log(e.keyCode);//tab : 9
+        if(e.keyCode == 9)
+        {
+            img5.style.background = "url('img/" + key + ".jpg') no-repeat";
+            img5.style.backgroundSize = "100%";
+            key++;
+            if(key == 5)
+            {
+                key = 1;
+            }
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str = prompt("请输入一串字符串：");
+    function numToInterchange(str) {
+        var newstr = str.split("");
+        var temp;
+        for(var i = 0; i < Math.floor(newstr.length / 2); i++)
+        {
+            temp = newstr[i];
+            newstr[i] = newstr[newstr.length - i -1];
+            newstr[newstr.length - i - 1] = temp;
+        }
+        newstr = newstr.toString().replace(/,/g,"");
+        document.write("str:" + str + "<br>");
+        document.write("newstr:" + newstr + "<br>");
+    }
+    numToInterchange(str);
+</script>
+</body>
+</html>

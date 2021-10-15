@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .d1{
+            width: 500px;
+            height: 300px;
+            border: 1px solid red;
+            background-color: blanchedalmond;
+        }
+        .d1 p{
+            line-height: 30px;
+            font-size: 18px;
+            text-align: justify;
+            padding: 0px 20px;
+            text-indent: 2em;
+        }
+    </style>
+</head>
+<body>
+<div class="d1">
+    <p id="str">2020年东京奥运会，也称第32届夏季奥林匹克运动会，是由日本奥林匹克委员会举办的国际性运动会，于2021年7月23日开幕、8月8日闭幕。2020年东京奥运会参赛国家或地区总数达204个，另有俄罗斯奥运队（ROC）和奥林匹克难民代表团2个参赛队伍，共11669名参赛运动员 ；2020年东京奥运会是第一场空场举办的奥运会，共有33个大项、339个小项、339场金牌赛，其中滑板、冲浪、竞技攀岩、棒垒球和空手道5个项目首次现身奥运会。</p>
+</div>
+<span>查找：</span><input type="text" id="inp1">
+<button id="b1">查找</button><br>
+<span>替换：</span><input type="text" id="inp2">
+<button id="b2">替换</button>
+<script>
+    var str = document.getElementById("str");
+    var b1 = document.getElementById("b1");
+    var b2 = document.getElementById("b2");
+    var inp1 = document.getElementById("inp1");
+    var inp2 = document.getElementById("inp2");
+    var str1 = str.innerHTML;
+    b1.onclick = function () {
+        var s1 = inp1.value;
+//        var key = 0;
+        var str2 = "";
+        if(s1 != "")
+        {
+//            for(var i = 0; i < str1.length; )
+//            {
+//                key = str1.indexOf(s1,i);
+//                if(key != -1)
+//                {
+//                    for(var j = 0; j < key; j++)
+//                    {
+//                        str2 = str2 + str1[j];
+//                    }
+//                    str2 = str2 + "<mark>" + s1 + "</mark>";
+//                    i = key;
+//                }
+//                else {
+//                    i++;
+//                }
+//            }
+//            str.innerHTML = str2;
+            str2 = str1.replace(new RegExp(s1,"g"),"<mark>" + s1 + "</mark>");
+            str.innerHTML = str2;
+            alert("查找完成");
+        }
+        else
+        {
+            alert("需要输入查找的文字或字符串");
+        }
+    }
+
+    b2.onclick = function () {
+        var s1 = inp1.value;
+        var s2 = inp2.value;
+        var str2 = "";
+        if(s1 != "")
+        {
+            str2 = str1.replace(new RegExp(s1,"g"),s2);
+            str.innerHTML = str2;
+            alert("替换完成");
+        }
+    }
+</script>
+</body>
+</html>

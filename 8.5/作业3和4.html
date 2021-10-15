@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str = prompt("请输入一串字符串：");
+    function reverseOrder(str) {
+        var newstr = "";
+        for(var i = str.length - 1; i >= 0; i--)
+        {
+            newstr += str[i];
+        }
+        return newstr;
+    }
+    document.write(str + "的倒序是：" + reverseOrder(str) + "<br>");
+
+    var str1 = "To be or not to be";
+    function reverseOrderByWord(str) {
+        var newstr = "";
+        var s1 = "",s2 = "";
+        for(var i = 0; i < str.length; i++)
+        {
+            if(str[i] != " ")
+            {
+                s1 += str[i];
+            }
+            else
+            {
+                s2 = reverseOrder(s1);
+                newstr = newstr + s2 +" ";
+                s1 = "";
+            }
+        }
+        if(newstr.length != str.length)
+        {
+            s2 = reverseOrder(s1);
+            newstr = newstr + s2;
+            s1 = "";
+        }
+        document.write(str + "中的单词进行倒序之后为：" + newstr);
+    }
+    reverseOrderByWord(str1);
+</script>
+</body>
+</html>
