@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var x = prompt("请输入x的值：");
+    var y = prompt("请输入y的值：");
+    var z = prompt("请输入z的值：");
+    document.write("x的值为：" + x + "<br/>");
+    document.write("y的值为：" + y + "<br/>");
+    document.write("z的值为：" + z + "<br/>");
+    var max = 0 , min = 0;
+    max = Math.max(x,y,z);
+    min = Math.min(x,y,z);
+    document.write("x,y,z三个数中最大值为" + max + "<br/>");
+    document.write("x,y,z三个数中最小值为" + min + "<br/><br/>");
+
+    var now = new Date();
+    var forward = new Date(2021,8,5,0,0,0);//实际上设置的时间是2021年9月5号0:00:00
+    forward.setMonth(forward.getMonth() - 1);//需要在原来的月份上减去1，才可以将其设置为2021年8月5号0:00:00
+    document.write("现在的时间是" + now + "<br/>");
+    var difference = forward.getTime() - now.getTime();
+    var day = 0 , hour = 0 , minutes = 0 , second = 0 , millisecond = 0;
+    millisecond = difference % 1000;
+    second = Math.floor(difference / 1000) % 60;
+    minutes = Math.floor(difference / 60000) % 60;
+    hour =  Math.floor(difference / 3600000) %24;
+    day = Math.floor(difference / 86400000);
+    document.write("距2021年8月5号00:00:00还有" + day + "天" + hour + "小时" + minutes + "分钟" + second + "秒" + millisecond + "毫秒" + "<br/><br/>");
+
+    var time_day = Math.floor(89 / 24) , time_hour = 89 % 24;
+    document.write("89个小时可以换算成为" + time_day + "天" + time_hour + "小时" + "<br/><br/>");
+
+    var x =20 , y = 30 , time = 2 , v = 5;
+    var r = Math.PI / 180 * 45;
+    var dx = Math.floor(v * time * Math.cos(r));
+    var dy = Math.floor(v * time * Math.sin(r));
+    document.write("从点（20,30）的小球向45度方向以5m/s的速度移动后，位置为：" + "<br/>");
+    document.write("左上方：" + "(" + (x - dx) + "," + (y + dy) + ")" + "<br/>");
+    document.write("左下方：" + "(" + (x - dx) + "," + (y - dy) + ")" + "<br/>");
+    document.write("右上方：" + "(" + (x + dx) + "," + (y + dy) + ")" + "<br/>");
+    document.write("右下方：" + "(" + (x + dx) + "," + (y - dy) + ")" + "<br/>");
+</script>
+</body>
+</html>
