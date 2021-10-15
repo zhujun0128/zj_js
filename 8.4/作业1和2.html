@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var arr = [8,2,4,5,3,0,3,4,5];
+    var sub = getZeroSubByArray(arr);
+    function getZeroSubByArray(arr) {
+        for(var i = 0; i < arr.length; i++)
+        {
+            if(arr[i] == 0)
+                return i;
+        }
+    }
+    document.write("1.数组arr=[8,2,4,5,3,0,3,4,5]中值为0的下标为" + sub + "<br/>");
+
+    var l = prompt("请输入长：");
+    var w = prompt("请输入宽：");
+    if(!isNaN(l) && !isNaN(w))
+    {
+        if(l == w)
+        {
+            document.write("2.这是一个正方形，面积是" + l * w);
+        }
+        else
+        {
+            document.write("2.这是一个长方形，面积是" + l * w);
+        }
+    }
+    else
+    {
+        document.write("2.输入的数据不合法");
+    }
+
+</script>
+</body>
+</html>

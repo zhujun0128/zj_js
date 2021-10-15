@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #img1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="img1"></div>
+    <div style="margin-top: 20px; ">
+        <button onclick="turnOnTime()" style="margin-right: 20px;">点击开始计时</button>
+        <button onclick="turnOffTime()">点击停止计时</button>
+        <p>本次运动的时间为：<span id="time">0</span>ms</p>
+        <p>box的速度是0.5，盒子的角度以右下角45度行走</p>
+    </div>
+</div>
+<script>
+    var time1,time2,time = 0,speed,r = Math.PI / 180 * 45;
+    var key = null,dx = 0,dy = 0;
+    var bo = false;//标记
+    function turnOnTime() {
+        time1 = new Date().getTime();
+        speed = 0.5;
+        if(key == null)
+        {
+            key = setInterval(moveImg,10);//每隔10ms就执行一次moveImg()函数
+        }
+        bo =true;
+        document.getElementById("time").innerHTML = 0;//设置初值
+    }
+    function turnOffTime() {
+        if(bo == true)
+        {
+            time2 = new Date().getTime();
+            time = time2 -time1;
+            speed = 0;
+            clearInterval(key);//结束setInterval动作
+            dx = 0;
+            dy = 0;
+            key = null;
+            document.getElementById("time").innerHTML = time;
+            bo = false;//避免结束后，再次点击导致运行时间变化
+        }
+
+    }
+    function moveImg() {
+        dx += Math.floor(10 * speed * Math.cos(r));
+        dy += Math.floor(10 * speed * Math.sin(r));
+        document.getElementById("img1").style.transform = "translateX(" + dx + "px) translateY(" + dy + "px)";
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #img1{
+            width: 100px;
+            height: 180px;
+            background: url('img/blum.gif') no-repeat ;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="img1"></div>
+    <div style="margin-top: 20px; ">
+        <button onclick="turnLight()">开/关灯</button>
+    </div>
+</div>
+<script>
+    var arr = ["blum.gif","blumlight.png"];
+    function turnLight() {
+        var turns = 0;
+        if(turns == 0)
+        {
+            turns = 1;
+            document.getElementById("img1").style.background = "url('img/" + arr[turns] + "') no-repeat";
+        }
+        else
+        {
+            turns = 0;
+            document.getElementById("img1").style.background = "url('img/" + arr[turns] + "') no-repeat";
+        }
+    }
+</script>
+</body>
+</html>
